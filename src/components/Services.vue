@@ -3,30 +3,71 @@ export default {
   name: 'Services',
   data() {
     return {
+      section: {
+        heading: "SERVICES",
+        title: "What I Do",
+      },
+
       services: [
-        { title: 'Frontend Dev', desc: 'Crafting responsive, interactive UIs with Vue.js & React.', icon: 'fa-laptop-code' },
-        { title: 'Backend API', desc: 'Robust server-side logic using Node.js & Python.', icon: 'fa-server' },
-        { title: 'UI/UX Design', desc: 'User-centered design principles that convert.', icon: 'fa-wand-magic-sparkles' },
-        { title: 'Mobile Apps', desc: 'Cross-platform mobile solutions used by millions.', icon: 'fa-mobile-screen' }
-      ]
+        {
+          title: "Frontend Dev",
+          desc: "Crafting responsive, interactive UIs with Vue.js & React.",
+          icon: "fa-laptop-code",
+        },
+        {
+          title: "Backend API",
+          desc: "Robust server-side logic using Node.js & Python.",
+          icon: "fa-server",
+        },
+        /* {
+          title: "UI/UX Design",
+          desc: "User-centered design principles that convert.",
+          icon: "fa-wand-magic-sparkles",
+        },
+        {
+          title: "Mobile Apps",
+          desc: "Cross-platform mobile solutions used by millions.",
+          icon: "fa-mobile-screen",
+        }, */
+      ],
     }
-  }
+  },
 }
 </script>
 
 <template>
   <section id="services" class="py-5">
     <div class="container">
-      <h2 class="section-title text-center" data-heading="SERVICES">What I Do</h2>
-      
-      <div class="row g-4">
-        <div class="col-md-6 col-lg-3" v-for="(service, index) in services" :key="index">
+      <h2
+        class="section-title text-center"
+        :data-heading="section.heading"
+      >
+        {{ section.title }}
+      </h2>
+
+<div class="row g-4 justify-content-center">
+        <div
+          class="col-md-6 col-lg-3"
+          v-for="(service, index) in services"
+          :key="index"
+        >
           <div class="service-card glass-card p-4 h-100 text-center">
-            <div class="icon-box mb-4 mx-auto d-flex align-items-center justify-content-center text-white">
-              <i class="fa-solid fs-3" :class="service.icon"></i>
+            <div
+              class="icon-box mb-4 mx-auto d-flex align-items-center justify-content-center text-white"
+            >
+              <i
+                class="fa-solid fs-3"
+                :class="service.icon"
+              ></i>
             </div>
-            <h4 class="mb-3 fw-bold">{{ service.title }}</h4>
-            <p class="text-secondary mb-0">{{ service.desc }}</p>
+
+            <h4 class="mb-3 fw-bold">
+              {{ service.title }}
+            </h4>
+
+            <p class="text-secondary mb-0">
+              {{ service.desc }}
+            </p>
           </div>
         </div>
       </div>

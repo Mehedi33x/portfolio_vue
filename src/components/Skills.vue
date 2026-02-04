@@ -4,12 +4,14 @@ export default {
   data() {
     return {
       skills: [
-        { name: 'HTML5', icon: 'fa-html5', color: '#E34F26', level: 95 },
-        { name: 'CSS3', icon: 'fa-css3-alt', color: '#1572B6', level: 90 },
+        { name: 'PHP', icon: 'fa-php', color: '#777BB4', level: 90 },
+        { name: 'Laravel', icon: 'fa-laravel', color: '#FF2D20', level: 90 },
         { name: 'JavaScript', icon: 'fa-js', color: '#F7DF1E', level: 90 },
         { name: 'Vue.js', icon: 'fa-vuejs', color: '#4FC08D', level: 85 },
-        { name: 'Bootstrap', icon: 'fa-bootstrap', color: '#7952B3', level: 90 },
-        { name: 'React', icon: 'fa-react', color: '#61DAFB', level: 80 }
+        { name: 'React', icon: 'fa-react', color: '#61DAFB', level: 80 },
+        { name: 'RESTful API', icon: 'fa-cloud', color: '#6c757d', level: 85 },
+        { name: 'Git', icon: 'fa-git-alt', color: '#F1502F', level: 90 },
+        { name: 'GitHub', icon: 'fa-github', color: '#181717', level: 90 }
       ]
     }
   }
@@ -55,6 +57,7 @@ export default {
     </div>
   </section>
 </template>
+
 
 <style scoped>
 .progress-bar {
