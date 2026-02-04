@@ -10,15 +10,11 @@ export default {
 </script>
 
 <template>
-  <footer class="py-4 text-center glass border-top-0">
+  <footer class="py-4 text-center border-top border-white border-opacity-10 position-relative z-1">
     <div class="container">
       <p class="mb-0 text-secondary">
-        &copy; {{ year }} MyPortfolio. All rights reserved. 
-        <span class="d-block d-md-inline mt-2 mt-md-0 ms-md-2">Designed with ❤️ in Vue.js</span>
+        &copy; {{ year }} DevPortfolio. Built with <i class="fa-solid fa-heart text-danger animate__animated animate__pulse animate__infinite"></i> using Vue.js & Bootstrap.
       </p>
     </div>
   </footer>
 </template>
-
-<style scoped>
-</style>

@@ -30,38 +30,40 @@ export default {
 <template>
   <nav 
     class="navbar navbar-expand-lg fixed-top transition-all"
-    :class="{ 'glass navbar-dark py-2': scrolled, 'navbar-dark bg-transparent py-4': !scrolled }"
+    :class="{ 'glass py-2': scrolled, 'bg-transparent py-4': !scrolled }"
   >
     <div class="container">
-      <a class="navbar-brand fw-bold fs-3" href="#">
-        Portfolio<span class="text-primary-custom">.</span>
+      <a class="navbar-brand fw-bold fs-3 d-flex align-items-center gap-2" href="#">
+        <i class="fa-solid fa-code text-primary"></i>
+        <span>Dev<span class="text-primary">Portfolio</span></span>
       </a>
       
       <button 
-        class="navbar-toggler border-0" 
+        class="navbar-toggler border-0 text-white" 
         type="button" 
         @click="toggleNav"
-        aria-label="Toggle navigation"
       >
-        <span class="navbar-toggler-icon"></span>
+        <i class="fa-solid fa-bars-staggered fs-3"></i>
       </button>
 
       <div 
         class="collapse navbar-collapse" 
         :class="{ 'show': !isNavCollapsed }"
       >
-        <ul class="navbar-nav ms-auto align-items-center">
-          <li class="nav-item" v-for="item in ['Home', 'About', 'Services', 'Skills', 'Projects', 'Contact']" :key="item">
+        <ul class="navbar-nav ms-auto align-items-center gap-lg-4">
+          <li class="nav-item" v-for="(item, index) in ['Home', 'About', 'Services', 'Skills', 'Projects']" :key="index">
             <a 
-              class="nav-link px-3 fw-medium" 
+              class="nav-link fw-medium" 
               :href="`#${item.toLowerCase()}`" 
               @click="closeNav"
             >
               {{ item }}
             </a>
           </li>
-          <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
-            <a href="#contact" class="btn btn-primary btn-sm px-4" @click="closeNav">Hire Me</a>
+          <li class="nav-item ms-lg-2">
+            <a href="#contact" class="btn btn-primary btn-sm px-4" @click="closeNav">
+              Let's Talk <i class="fa-solid fa-arrow-right ms-2"></i>
+            </a>
           </li>
         </ul>
       </div>
@@ -76,47 +78,28 @@ export default {
 
 .navbar-brand {
   color: #fff !important;
-  letter-spacing: -1px;
-}
-
-.text-primary-custom {
-  color: var(--secondary-color);
+  font-family: 'Outfit', sans-serif;
 }
 
 .nav-link {
-  color: rgba(255, 255, 255, 0.8) !important;
-  position: relative;
+  color: #cbd5e1 !important;
+  transition: color 0.3s ease;
+  font-size: 0.95rem;
 }
 
-.nav-link:hover, .nav-link.active {
+.nav-link:hover {
   color: #fff !important;
+  text-shadow: 0 0 10px rgba(255,255,255,0.3);
 }
 
-.nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: 0px;
-  left: 50%;
-  width: 0;
-  height: 2px;
-  background: var(--secondary-color);
-  transition: all 0.3s ease;
-  transform: translateX(-50%);
-}
-
-.nav-link:hover::after {
-  width: 80%;
-}
-
-/* Mobile Menu Glass override */
 @media (max-width: 991px) {
   .navbar-collapse {
-    background: rgba(15, 23, 42, 0.95);
-    backdrop-filter: blur(10px);
-    padding: 1rem;
+    background: rgba(15, 23, 42, 0.98);
+    backdrop-filter: blur(20px);
+    padding: 2rem;
     border-radius: 1rem;
     margin-top: 1rem;
-    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 10px 50px rgba(0,0,0,0.5);
   }
 }
 </style>

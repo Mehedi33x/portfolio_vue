@@ -4,10 +4,10 @@ export default {
   data() {
     return {
       services: [
-        { title: 'Web Development', desc: 'Building responsive and high-performance websites.', icon: '💻' },
-        { title: 'UI/UX Design', desc: 'Creating intuitive and visual user interfaces.', icon: '🎨' },
-        { title: 'Mobile Apps', desc: 'Developing cross-platform mobile applications.', icon: '📱' },
-        { title: 'SEO Optimization', desc: 'Improving visibility and ranking on search engines.', icon: '🚀' }
+        { title: 'Frontend Dev', desc: 'Crafting responsive, interactive UIs with Vue.js & React.', icon: 'fa-laptop-code' },
+        { title: 'Backend API', desc: 'Robust server-side logic using Node.js & Python.', icon: 'fa-server' },
+        { title: 'UI/UX Design', desc: 'User-centered design principles that convert.', icon: 'fa-wand-magic-sparkles' },
+        { title: 'Mobile Apps', desc: 'Cross-platform mobile solutions used by millions.', icon: 'fa-mobile-screen' }
       ]
     }
   }
@@ -15,19 +15,17 @@ export default {
 </script>
 
 <template>
-  <section id="services" class="py-5 bg-darker">
+  <section id="services" class="py-5">
     <div class="container">
-      <div class="text-center">
-        <h2 class="section-title">My Services</h2>
-      </div>
+      <h2 class="section-title text-center" data-heading="SERVICES">What I Do</h2>
       
-      <div class="row g-4 pt-4">
+      <div class="row g-4">
         <div class="col-md-6 col-lg-3" v-for="(service, index) in services" :key="index">
           <div class="service-card glass-card p-4 h-100 text-center">
-            <div class="icon-wrapper mb-4 mx-auto d-flex align-items-center justify-content-center text-white">
-              <span class="display-5">{{ service.icon }}</span>
+            <div class="icon-box mb-4 mx-auto d-flex align-items-center justify-content-center text-white">
+              <i class="fa-solid fs-3" :class="service.icon"></i>
             </div>
-            <h4 class="mb-3">{{ service.title }}</h4>
+            <h4 class="mb-3 fw-bold">{{ service.title }}</h4>
             <p class="text-secondary mb-0">{{ service.desc }}</p>
           </div>
         </div>
@@ -37,21 +35,32 @@ export default {
 </template>
 
 <style scoped>
-.bg-darker {
-  background-color: rgba(2, 6, 23, 0.5);
-}
-
-.icon-wrapper {
-  width: 80px;
-  height: 80px;
-  background: var(--card-bg);
-  border-radius: 50%;
-  box-shadow: 0 0 20px rgba(108, 99, 255, 0.1);
+.icon-box {
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
   transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
-.service-card:hover .icon-wrapper {
+.icon-box::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  padding: 1px;
   background: var(--gradient-main);
-  transform: scale(1.1);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.service-card:hover .icon-box {
+  background: var(--gradient-main);
+  transform: rotate(5deg) scale(1.1);
+  box-shadow: 0 0 30px rgba(99, 102, 241, 0.4);
 }
 </style>

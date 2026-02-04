@@ -5,24 +5,28 @@ export default {
     return {
       projects: [
         { 
-          title: 'E-Commerce Store', 
-          category: 'Web Application',
-          image: 'https://placehold.co/600x400/1e293b/FFFFFF?text=E-Store' 
+          title: 'Crypto Dashboard', 
+          category: 'Fintech App',
+          image: 'https://placehold.co/600x400/1e293b/FFFFFF?text=Crypto+Dash',
+          tags: ['Vue', 'API', 'Chart.js']
         },
         { 
-          title: 'Portfolio Design', 
-          category: 'UI/UX Design',
-          image: 'https://placehold.co/600x400/1e293b/FFFFFF?text=Portfolio' 
+          title: 'Modern E-Commerce', 
+          category: 'Shopping Platform',
+          image: 'https://placehold.co/600x400/1e293b/FFFFFF?text=E-Store',
+          tags: ['React', 'Node', 'Stripe']
         },
         { 
-          title: 'Task Manager', 
-          category: 'Productivity',
-          image: 'https://placehold.co/600x400/1e293b/FFFFFF?text=Task+App' 
+          title: 'Task Master', 
+          category: 'Productivity Tool',
+          image: 'https://placehold.co/600x400/1e293b/FFFFFF?text=Task+App',
+          tags: ['Vue', 'Firebase']
         },
          { 
-          title: 'Dashboard UI', 
-          category: 'Frontend',
-          image: 'https://placehold.co/600x400/1e293b/FFFFFF?text=Dashboard' 
+          title: 'AI Image Gen', 
+          category: 'SaaS Application',
+          image: 'https://placehold.co/600x400/1e293b/FFFFFF?text=AI+Gen',
+          tags: ['OpenAI', 'Next.js']
         }
       ]
     }
@@ -31,22 +35,41 @@ export default {
 </script>
 
 <template>
-  <section id="projects" class="py-5 bg-darker">
+  <section id="projects" class="py-5">
     <div class="container">
-      <h2 class="section-title">Featured Projects</h2>
+      <h2 class="section-title text-center" data-heading="PORTFOLIO">Recent Work</h2>
       
       <div class="row g-4">
-        <div class="col-md-6 col-lg-3" v-for="(project, index) in projects" :key="index">
-          <div class="project-card glass-card overflow-hidden h-100 group">
+        <div class="col-md-6 col-lg-6" v-for="(project, index) in projects" :key="index">
+          <div class="project-card glass-card p-0 h-100 group">
             <div class="position-relative overflow-hidden project-img-wrapper">
               <img :src="project.image" :alt="project.title" class="img-fluid w-100 project-img">
-              <div class="overlay d-flex align-items-center justify-content-center">
-                <button class="btn btn-light btn-sm rounded-circle px-3 py-2">View</button>
+              
+              <!-- Hover Overlay -->
+              <div class="overlay d-flex flex-column align-items-center justify-content-center gap-3">
+                <h4 class="fw-bold mb-1">{{ project.title }}</h4>
+                <p class="text-light opacity-75 small text-uppercase spacing-1">{{ project.category }}</p>
+                <div class="d-flex gap-2">
+                  <button class="btn btn-primary btn-sm rounded-pill px-3">
+                    <i class="fa-solid fa-eye me-1"></i> Demo
+                  </button>
+                  <button class="btn btn-outline-light btn-sm rounded-pill px-3">
+                    <i class="fa-brands fa-github me-1"></i> Code
+                  </button>
+                </div>
               </div>
             </div>
-            <div class="p-4">
-              <small class="text-primary text-uppercase fw-bold">{{ project.category }}</small>
-              <h5 class="mt-2 mb-0 fw-bold">{{ project.title }}</h5>
+            
+            <div class="p-4 d-flex justify-content-between align-items-center">
+              <div>
+                <h5 class="fw-bold mb-1">{{ project.title }}</h5>
+                <small class="text-secondary">{{ project.category }}</small>
+              </div>
+              <div class="d-flex gap-1">
+                <span v-for="tag in project.tags" :key="tag" class="badge bg-white bg-opacity-10 text-white fw-light border border-white border-opacity-10">
+                  {{ tag }}
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -56,33 +79,27 @@ export default {
 </template>
 
 <style scoped>
-.project-card {
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
 .project-img-wrapper {
-  position: relative;
+  height: 250px;
 }
-
 .project-img {
-  transition: transform 0.5s ease;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
 .overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(15, 23, 42, 0.8);
+  inset: 0;
+  background: rgba(15, 23, 42, 0.9);
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: all 0.4s ease;
+  backdrop-filter: blur(4px);
+  transform: translateY(20px);
 }
-
 .project-card:hover .overlay {
   opacity: 1;
+  transform: translateY(0);
 }
-
 .project-card:hover .project-img {
   transform: scale(1.1);
 }
